@@ -32,6 +32,13 @@ class ChordType(Enum):
     MINOR6 = "minor6"
     SUSPENDED4 = "suspended4"
 
+def get_supported_chord_names_list():
+    chord_names = []
+    for family in ChordFamily._value2member_map_.keys():
+        for type in ChordType._value2member_map_.keys():
+            chord_names.append(family + " " + type)
+    return chord_names
+    
 class Chord:
     def __init__(self, family, type):
         if family not in ChordFamily._value2member_map_:

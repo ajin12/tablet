@@ -10,7 +10,6 @@ sys.path.insert(0, 'modules')
 
 with open(sys.argv[1], 'r') as file:
     module = importlib.import_module("tablet")
-    tab = []
 
     for line in file:
         line = line.strip()
@@ -18,7 +17,13 @@ with open(sys.argv[1], 'r') as file:
             continue
         parts = line.split()
 
-        chord = getattr(module, parts[0])(parts[1], parts[2])
-        tab.append(chord)
+        # TODO: make sure params are valid
+        if "play" in parts:
+            name = " ".join(parts[1:])
+            getattr(module, parts[0])(name)
+        elif "create_chord" in parts:
+            shape = [int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4]), int(parts[5]), int(parts[6])]
+            name = " ".join(parts[7:])
+            getattr(module, parts[0])(shape, name)
 
-    getattr(module, "print_tab")(tab)
+    getattr(module, "print_tab")()
