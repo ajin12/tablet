@@ -1,6 +1,8 @@
 import sys
 import importlib
 
+from modules.tablet import NUM_STRINGS
+
 # source file is the first argument to the script
 if len(sys.argv) != 2:
     print('usage: %s <src.tablet>' % sys.argv[0])
@@ -19,8 +21,11 @@ with open(sys.argv[1], 'r') as file:
 
         # TODO: make sure params are valid
         if "play" in parts:
-            name = " ".join(parts[1:])
-            getattr(module, parts[0])(name)
+            if len(parts) == NUM_STRINGS + 1:
+                name_or_shape = [int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4]), int(parts[5]), int(parts[6])]
+            else:
+                name_or_shape = " ".join(parts[1:])
+            getattr(module, parts[0])(name_or_shape)
         elif "create_chord" in parts:
             shape = [int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4]), int(parts[5]), int(parts[6])]
             name = " ".join(parts[7:])

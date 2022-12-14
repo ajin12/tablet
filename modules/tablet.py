@@ -11,14 +11,18 @@ NUM_STRINGS = 6
 tab = []
 custom_chords = {}
 
-def play(name):
-    if name in custom_chords:
-        tab.append(custom_chords[name])
-    else:
-        [chord, type] = name.split(" ")
-        chord = Chord(chord, type)
-        chord_method = 'play_' + type
-        tab.append(getattr(chord, chord_method)())
+def play(name_or_shape):
+    match type(name_or_shape).__name__:
+        case "str":
+            if name_or_shape in custom_chords:
+                tab.append(custom_chords[name_or_shape])
+            else:
+                [chord, chord_type] = name_or_shape.split(" ")
+                chord = Chord(chord, chord_type)
+                chord_method = 'play_' + chord_type
+                tab.append(getattr(chord, chord_method)())
+        case "list": # custom shape
+            tab.append(name_or_shape)
 
 def create_chord(shape, chord_name):
     # check if chord is already supported
