@@ -37,7 +37,7 @@ class Chord:
         if family not in ChordFamily._value2member_map_:
             raise_enum_type_error("Unrecognized chord family", family, ChordFamily)
         if type not in ChordType._value2member_map_:
-            raise_enum_type_error("Unsupported chord type", family, ChordType)
+            raise_enum_type_error("Unsupported chord type", type, ChordType)
 
         self.family = family
         self.type = type
