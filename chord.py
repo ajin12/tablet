@@ -44,244 +44,244 @@ class Chord:
 
     def play_major(self):
         match self.family:
-            case "A":
+            case ChordFamily.A.value:
                 return [-1, 0, 2, 2, 2, 0]
-            case "A#" | "Bb":
+            case ChordFamily.ASharp.value | ChordFamily.BFlat.value:
                 return [-1, 1, 3, 3, 3, -1]
-            case "B":
+            case ChordFamily.B.value:
                 return [-1, -1, 4, 4, 4, 2]
-            case "C":
+            case ChordFamily.C.value:
                 return [-1, 3, 2, 0, 1, 0]
-            case "C#" | "Db":
+            case ChordFamily.CSharp.value | ChordFamily.DFlat.value:
                 return [-1, 4, 3, 1, 2, -1]
-            case "D":
+            case ChordFamily.D.value:
                 return [-1, -1, 0, 2, 3, 2]
-            case "D#" | "Eb":
+            case ChordFamily.DSharp.value | ChordFamily.EFlat.value:
                 return [-1, 6, 5, 3, 4, -1]
-            case "E":
+            case ChordFamily.E.value:
                 return [0, 2, 2, 1, 0, 0]
-            case "F":
+            case ChordFamily.F.value:
                 return [-1, -1, 3, 2, 1, 1]
-            case "F#" | "Gb":
+            case ChordFamily.FSharp.value | ChordFamily.GFlat.value:
                 return [-1, -1, -1, 3, 2, 2]
-            case "G":
+            case ChordFamily.G.value:
                 return [3, 2, 0, 0, 0, 3]
-            case "G#" | "Ab":
+            case ChordFamily.GSharp.value | ChordFamily.AFlat.value:
                 return [4, 6, 6, 5, -1, -1]
     
     def play_minor(self):
         match self.family:
-            case "A":
+            case ChordFamily.A.value:
                 return [-1, -1, 2, 2, 1, 0]
-            case "A#" | "Bb":
+            case ChordFamily.ASharp.value | ChordFamily.BFlat.value:
                 return [-1, 1, 3, 4, 2, 1]
-            case "B":
+            case ChordFamily.B.value:
                 return [-1, -1, 4, 4, 3, 2]
-            case "C":
+            case ChordFamily.C.value:
                 return [-1, 3, 1, 0, 4, 3]
-            case "C#" | "Db":
+            case ChordFamily.CSharp.value | ChordFamily.DFlat.value:
                 return [-1, -1, 2, 1, 2, 0]
-            case "D":
+            case ChordFamily.D.value:
                 return [-1, -1, 0, 2, 3, 1]
-            case "D#" | "Eb":
+            case ChordFamily.DSharp.value | ChordFamily.EFlat.value:
                 return [-1, -1, -1, 3, 4, 2]
-            case "E":
+            case ChordFamily.E.value:
                 return [0, 2, 2, 0, 0, 0]
-            case "F":
+            case ChordFamily.F.value:
                 return [-1, -1, 3, 1, 1, 1]
-            case "F#" | "Gb":
+            case ChordFamily.FSharp.value | ChordFamily.GFlat.value:
                 return [-1, 4, 4, 2, 2, 2]
-            case "G":
+            case ChordFamily.G.value:
                 return [-1, -1, 0, 3, 3, 3]
-            case "G#" | "Ab":
+            case ChordFamily.GSharp.value | ChordFamily.AFlat.value:
                 return [-1, -1, 6, 4, 4, 4]
     
     def play_dominant7(self):
         match self.family:
-            case "A":
+            case ChordFamily.A.value:
                 return [0, 0, 2, 0, 2, 0]
-            case "A#" | "Bb":
+            case ChordFamily.ASharp.value | ChordFamily.BFlat.value:
                 return [1, 1, 3, 1, 3, 1]
-            case "B":
+            case ChordFamily.B.value:
                 return [2, 2, 4, 2, 4, 2]
-            case "C":
+            case ChordFamily.C.value:
                 return [0, 3, 2, 3, 1, 0]
-            case "C#" | "Db":
+            case ChordFamily.CSharp.value | ChordFamily.DFlat.value:
                 return [1, 2, 3, 1, 2, 1]
-            case "D":
+            case ChordFamily.D.value:
                 return [-1, 0, 0, 2, 1, 2]
-            case "D#" | "Eb":
+            case ChordFamily.DSharp.value | ChordFamily.EFlat.value:
                 return [-1, 1, 1, 3, 2, 3]
-            case "E":
+            case ChordFamily.E.value:
                 return [0, 2, 2, 1, 3, 0]
-            case "F":
+            case ChordFamily.F.value:
                 return [1, 3, 1, 2, 1, 1]
-            case "F#" | "Gb":
+            case ChordFamily.FSharp.value | ChordFamily.GFlat.value:
                 return [2, 4, 2, 3, 2, 2]
-            case "G":
+            case ChordFamily.G.value:
                 return [3, 2, 0, 0, 0, 1]
-            case "G#" | "Ab":
+            case ChordFamily.GSharp.value | ChordFamily.AFlat.value:
                 return [4, 3, 1, 1, 1, 2]
 
     def play_minor7(self):
         match self.family:
-            case "A":
+            case ChordFamily.A.value:
                 return [-1, 0, 2, 0, 1, 0]
-            case "A#" | "Bb":
+            case ChordFamily.ASharp.value | ChordFamily.BFlat.value:
                 return [1, 1, 3, 1, 2, 1]
-            case "B":
+            case ChordFamily.B.value:
                 return [-1, 2, 0, 2, 0, 2]
-            case "C":
+            case ChordFamily.C.value:
                 return [-1, 1, 1, 3, 1, 3]
-            case "C#" | "Db":
+            case ChordFamily.CSharp.value | ChordFamily.DFlat.value:
                 return [0, 2, 2, 4, 2, 4]
-            case "D":
+            case ChordFamily.D.value:
                 return [-1, 0, 0, 2, 1, 1]
-            case "D#" | "Eb":
+            case ChordFamily.DSharp.value | ChordFamily.EFlat.value:
                 return [-1, 1, 1, 3, 2, 2]
-            case "E":
+            case ChordFamily.E.value:
                 return [0, 2, 0, 0, 0, 0]
-            case "F":
+            case ChordFamily.F.value:
                 return [1, 3, 1, 1, 1, 1]
-            case "F#" | "Gb":
+            case ChordFamily.FSharp.value | ChordFamily.GFlat.value:
                 return [2, 4, 2, 2, 2, 2]
-            case "G":
+            case ChordFamily.G.value:
                 return [3, 5, 3, 3, 3, 3]
-            case "G#" | "Ab":
+            case ChordFamily.GSharp.value | ChordFamily.AFlat.value:
                 return [0, 0, 2, 2, 1, 3]
 
     def play_diminished(self):
         match self.family:
-            case "A":
+            case ChordFamily.A.value:
                 return [5, 6, 7, 5, 4, 5]
-            case "A#" | "Bb":
+            case ChordFamily.ASharp.value | ChordFamily.BFlat.value:
                 return [0, 1, 2, 3, 2, 0]
-            case "B":
+            case ChordFamily.B.value:
                 return [1, -1, 3, 4, 3, 1]
-            case "C":
+            case ChordFamily.C.value:
                 return [-1, -1, 4, 5, 4, 2]
-            case "C#" | "Db":
+            case ChordFamily.CSharp.value | ChordFamily.DFlat.value:
                 return [0, -1, 2, 0, 2, 3]
-            case "D":
+            case ChordFamily.D.value:
                 return [1, -1, 3, 1, 3, 1]
-            case "D#" | "Eb":
+            case ChordFamily.DSharp.value | ChordFamily.EFlat.value:
                 return [2, -1, 4, 2, 4, 2]
-            case "E":
+            case ChordFamily.E.value:
                 return [3, -1, 5, 3, 5, 3]
-            case "F":
+            case ChordFamily.F.value:
                 return [1, 2, 3, 1, 0, 1]
-            case "F#" | "Gb":
+            case ChordFamily.FSharp.value | ChordFamily.GFlat.value:
                 return [2, 0, 4, 2, 1, 2]
-            case "G":
+            case ChordFamily.G.value:
                 return [3, 4, 0, 3, 2, 3]
-            case "G#" | "Ab":
+            case ChordFamily.GSharp.value | ChordFamily.AFlat.value:
                 return [4, 5, 0, 4, 3, 4]
 
     def play_augmented(self):
         match self.family:
-            case "A":
+            case ChordFamily.A.value:
                 return [1, 0, 3, 2, 2, 1]
-            case "A#" | "Bb":
+            case ChordFamily.ASharp.value | ChordFamily.BFlat.value:
                 return [2, -1, 4, 3, 3, 2]
-            case "B":
+            case ChordFamily.B.value:
                 return [3, -1, 5, 4, 4, 3]
-            case "C":
+            case ChordFamily.C.value:
                 return [0, 3, 2, 1, 1, 0]
-            case "C#" | "Db":
+            case ChordFamily.CSharp.value | ChordFamily.DFlat.value:
                 return [-1, 0, 3, 2, 2, 1]
-            case "D":
+            case ChordFamily.D.value:
                 return [2, -1, 4, 3, 3, 2]
-            case "D#" | "Eb":
+            case ChordFamily.DSharp.value | ChordFamily.EFlat.value:
                 return [3, 2, 1, 0, 0, 3]
-            case "E":
+            case ChordFamily.E.value:
                 return [0, -1, 2, 1, 1, 0]
-            case "F":
+            case ChordFamily.F.value:
                 return [1, -1, 3, 2, 2, 1]
-            case "F#" | "Gb":
+            case ChordFamily.FSharp.value | ChordFamily.GFlat.value:
                 return [2, -1, 4, 3, 3, 2]
-            case "G":
+            case ChordFamily.G.value:
                 return [3, 2, 1, 0, 0, 3]
-            case "G#" | "Ab":
+            case ChordFamily.GSharp.value | ChordFamily.AFlat.value:
                 return [0, 3, 2, 1, 1, 0]
 
     def play_major6(self):
         match self.family:
-            case "A":
+            case ChordFamily.A.value:
                 return [0, 0, 2, 2, 2, 2]
-            case "A#" | "Bb":
+            case ChordFamily.ASharp.value | ChordFamily.BFlat.value:
                 return [1, 1, 3, 3, 3, 3]
-            case "B":
+            case ChordFamily.B.value:
                 return [2, 2, 4, 4, 4, 4]
-            case "C":
+            case ChordFamily.C.value:
                 return [0, 3, 2, 1, 1, 0]
-            case "C#" | "Db":
+            case ChordFamily.CSharp.value | ChordFamily.DFlat.value:
                 return [1, 1, 3, 1, 2, 1]
-            case "D":
+            case ChordFamily.D.value:
                 return [-1, 0, 0, 2, 0, 2]
-            case "D#" | "Eb":
+            case ChordFamily.DSharp.value | ChordFamily.EFlat.value:
                 return [-1, 1, 1, 3, 1, 3]
-            case "E":
+            case ChordFamily.E.value:
                 return [0, 2, 2, 1, 2, 0]
-            case "F":
+            case ChordFamily.F.value:
                 return [-1, 3, 3, 5, 3, 5]
-            case "F#" | "Gb":
+            case ChordFamily.FSharp.value | ChordFamily.GFlat.value:
                 return [-1, 4, 4, 6, 4, 6]
-            case "G":
+            case ChordFamily.G.value:
                 return [3, 2, 0, 0, 0, 0]
-            case "G#" | "Ab":
+            case ChordFamily.GSharp.value | ChordFamily.AFlat.value:
                 return [4, 3, 1, 1, 1, 1]
     
     def play_minor6(self):
         match self.family:
-            case "A":
+            case ChordFamily.A.value:
                 return [2, 0, 2, 2, 1, 2]
-            case "A#" | "Bb":
+            case ChordFamily.ASharp.value | ChordFamily.BFlat.value:
                 return [-1, -1, 3, 3, 2, 3]
-            case "B":
+            case ChordFamily.B.value:
                 return [-1, 2, 0, 1, 3, 2]
-            case "C":
+            case ChordFamily.C.value:
                 return [-1, 3, 1, 2, 1, 3]
-            case "C#" | "Db":
+            case ChordFamily.CSharp.value | ChordFamily.DFlat.value:
                 return [0, 4, 2, 3, 2, 4]
-            case "D":
+            case ChordFamily.D.value:
                 return [-1, 0, 0, 2, 0, 1]
-            case "D#" | "Eb":
+            case ChordFamily.DSharp.value | ChordFamily.EFlat.value:
                 return [-1, 1, 1, 3, 1, 2]
-            case "E":
+            case ChordFamily.E.value:
                 return [0, 2, 2, 0, 2, 0]
-            case "F":
+            case ChordFamily.F.value:
                 return [1, 3, 3, 1, 3, 1]
-            case "F#" | "Gb":
+            case ChordFamily.FSharp.value | ChordFamily.GFlat.value:
                 return [-1, 4, 4, 6, 4, 5]
-            case "G":
+            case ChordFamily.G.value:
                 return [0, 1, 0, 0, 3, 0]
-            case "G#" | "Ab":
+            case ChordFamily.GSharp.value | ChordFamily.AFlat.value:
                 return [-1, -1, 1, 1, 0, 1]
     
     def play_suspended4(self):
         match self.family:
-            case "A":
+            case ChordFamily.A.value:
                 return [0, 0, 2, 2, 3, 0]
-            case "A#" | "Bb":
+            case ChordFamily.ASharp.value | ChordFamily.BFlat.value:
                 return [1, 1, 1, 3, 4, 1]
-            case "B":
+            case ChordFamily.B.value:
                 return [2, 2, 4, 4, 5, 2]
-            case "C":
+            case ChordFamily.C.value:
                 return [3, 3, 3, 0, 1, 1]
-            case "C#" | "Db":
+            case ChordFamily.CSharp.value | ChordFamily.DFlat.value:
                 return [4, 4, 6, 6, 7, 4]
-            case "D":
+            case ChordFamily.D.value:
                 return [-1, 0, 0, 2, 3, 3]
-            case "D#" | "Eb":
+            case ChordFamily.DSharp.value | ChordFamily.EFlat.value:
                 return [-1, 1, 1, 1, 4, 4]
-            case "E":
+            case ChordFamily.E.value:
                 return [0, 2, 2, 2, 0, 0]
-            case "F":
+            case ChordFamily.F.value:
                 return [1, 1, 3, 3, 1, 1]
-            case "F#" | "Gb":
+            case ChordFamily.FSharp.value | ChordFamily.GFlat.value:
                 return [2, 2, 4, 4, 2, 2]
-            case "G":
+            case ChordFamily.G.value:
                 return [3, 3, 0, 0, 1, 3]
-            case "G#" | "Ab":
+            case ChordFamily.GSharp.value | ChordFamily.AFlat.value:
                 return [4, 4, 6, 6, 4, 4]
     
