@@ -1,6 +1,46 @@
+from enum import Enum
+
+from utils import raise_enum_type_error
+
+class ChordFamily(Enum):
+    A = "A"
+    ASharp = "A#"
+    BFlat = "Bb"
+    B = "B"
+    C = "C"
+    CSharp = "C#"
+    DFlat = "Db"
+    D = "D"
+    DSharp = "D#" 
+    EFlat = "Eb"
+    E = "E"
+    F = "F"
+    FSharp = "F#"
+    GFlat = "Gb"
+    G = "G"
+    GSharp = "G#"
+    AFlat = "Ab"
+
+class ChordType(Enum):
+    MAJOR = "major"
+    MINOR = "minor"
+    DOMINANT7 = "dominant7"
+    MINOR7 = "minor7"
+    DIMINISHED = "diminished"
+    AUGMENTED = "augmented"
+    MAJOR6 = "major6"
+    MINOR6 = "minor6"
+    SUSPENDED4 = "suspended4"
+
 class Chord:
-    def __init__(self, family):
+    def __init__(self, family, type):
+        if family not in ChordFamily._value2member_map_:
+            raise_enum_type_error("Unrecognized chord family", family, ChordFamily)
+        if type not in ChordType._value2member_map_:
+            raise_enum_type_error("Unsupported chord type", family, ChordType)
+
         self.family = family
+        self.type = type
 
     def play_major(self):
         match self.family:

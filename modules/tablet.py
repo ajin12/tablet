@@ -10,7 +10,7 @@ NUM_STRINGS = 6
 
 
 def play(chord, type):
-    chord = Chord(chord)
+    chord = Chord(chord, type)
     chord_method = 'play_' + type
     return getattr(chord, chord_method)()
 
