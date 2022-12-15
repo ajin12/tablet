@@ -30,5 +30,8 @@ with open(sys.argv[1], 'r') as file:
             shape = [int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4]), int(parts[5]), int(parts[6])]
             name = " ".join(parts[7:])
             getattr(module, parts[0])(shape, name)
+        elif "add_text" in parts:
+            text = " ".join(parts[1:])
+            getattr(module, parts[0])(text)
 
     getattr(module, "print_tab")()
