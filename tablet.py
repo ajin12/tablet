@@ -33,5 +33,7 @@ with open(sys.argv[1], 'r') as file:
         elif "add_text" in parts:
             text = " ".join(parts[1:])
             getattr(module, parts[0])(text)
+        elif any(part in ["create_section", "end_section", "repeat"] for part in parts):
+            getattr(module, parts[0])(parts[1])
 
     getattr(module, "print_tab")()

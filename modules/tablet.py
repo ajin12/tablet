@@ -15,6 +15,7 @@ class TabType(Enum):
 
 tab = []
 custom_chords = {}
+current_section = None
 
 def play(name_or_shape):
     match type(name_or_shape).__name__:
@@ -23,6 +24,7 @@ def play(name_or_shape):
                 tab.append({ 
                     "type": TabType.Chord, 
                     "value": custom_chords[name_or_shape],
+                    "section": current_section,
                 })
             else:
                 [chord, chord_type] = name_or_shape.split(" ")
@@ -32,11 +34,13 @@ def play(name_or_shape):
                 tab.append({ 
                     "type": TabType.Chord,
                     "value": shape,
+                    "section": current_section,
                 })
         case "list": # custom shape
             tab.append({
                 "type": TabType.Chord,
                 "value": name_or_shape,
+                "section": current_section,
             })
 
 def create_chord(shape, chord_name):
@@ -51,7 +55,38 @@ def add_text(text):
     tab.append({
         "type": TabType.Text,
         "value": text,
+        "section": current_section, 
     })
+
+def create_section(section_name):
+    global current_section
+
+    if current_section:
+        print("Nested sections are unsupported. Please end", current_section, "first.")
+        raise NotImplementedError("Cannot create nested sections")
+    current_section = section_name
+
+    tab.append({
+        "type": TabType.Text,
+        "value": "[%s]" % section_name,
+        "section": section_name,
+    })
+
+def end_section(section_name):
+    global current_section
+
+    if current_section != section_name:
+        print("Section name does not match. Did you mean to end", current_section + "?")
+        raise NameError("Section name does not match")
+    current_section = None
+
+def repeat(section_name):
+    section_items = [item for item in tab if item["section"] == section_name]
+    if not section_items:
+        print("No section named", section_name, "exists.")
+        raise NameError("Section does not exist")
+    for item in section_items:
+        tab.append(item)
 
 def print_tab():
     def reset_lines():

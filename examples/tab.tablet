@@ -15,7 +15,7 @@ play -1 2 -1 -1 -1 -1
 play C major9
 
 # currently does not support nested sections
-# create_section Chorus
+create_section Chorus
 
 add_text Jingle bells, jingle bells, jingle all the way!
 
@@ -27,6 +27,6 @@ play G major
 # play G major text:5
 # play D major text:6
 
-# end_section Chorus
+end_section Chorus
 
-# repeat Chorus
+repeat Chorus
