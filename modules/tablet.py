@@ -1,5 +1,7 @@
 from chord import ABBR, Chord, get_supported_chord_names_list
 from enum import Enum
+from fpdf import FPDF
+import os
 
 # TODO: be able to change tuning
 tuning = ["E", "A", "D", "G", "B", "e"]
@@ -21,6 +23,7 @@ tab = []
 custom_chords = {}
 current_section = None
 last_lyric = None
+tab_text = ""
 
 def play(name_or_shape, lyric_index = None):
     match type(name_or_shape).__name__:
@@ -113,11 +116,17 @@ def print_tab():
             lines[i] += string + " " + start_delimiter + space + space
         return lines, " " * indent_len, 0, 0, True, True
 
+    def print_and_pdf(text = ""):
+        global tab_text
+
+        print(text)
+        tab_text += text + "\n"
+
     def print_lines(lines):
-        print(chord_label_line)
+        print_and_pdf(chord_label_line)
         for line in lines[::-1]:
             line += space + space + end_delimiter
-            print(line)
+            print_and_pdf(line)
     
     lines, chord_label_line, curr_char_pos, last_abbr_len, is_first_chord, is_empty = reset_lines()
 
@@ -126,13 +135,13 @@ def print_tab():
             case TabType.Text | TabType.Lyric:
                 if not is_empty:
                     print_lines(lines)
-                    print()
+                    print_and_pdf()
 
                 if item["type"] == TabType.Text:
-                    print(item["value"])
+                    print_and_pdf(item["value"])
                     last_lyric = None
                 else:
-                    print(" " * indent_len + item["value"])
+                    print_and_pdf(" " * indent_len + item["value"])
                     last_lyric = item["value"]
 
                 lines, chord_label_line, curr_char_pos, last_abbr_len, is_first_chord, is_empty = reset_lines()
@@ -177,3 +186,11 @@ def print_tab():
 
     if not is_empty:
         print_lines(lines)
+
+def export_pdf(name):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.add_font("Roboto Mono", "", os.getcwd() + "/RobotoMono-Regular.ttf", uni=True)
+    pdf.set_font("Roboto Mono", size = 8)
+    pdf.multi_cell(0, 4, tab_text)
+    pdf.output(name + ".pdf")

@@ -30,7 +30,6 @@ add_lyric Oh what fun it is to ride
 play C major
 play G major lyric:5
 play 1 2 2 0 3 -1 lyric:6
-play 1 2 2 0 3 -1
 
 add_lyric In a one-horse open sleigh, hey!
 
@@ -40,3 +39,5 @@ play D dominant7 lyric:5
 end_section Chorus
 
 repeat Chorus
+
+export_pdf Jingle Bells
