@@ -19,15 +19,15 @@ play E minor
 
 create_section Chorus
 
-add_text Jingle bells, jingle bells, jingle all the way!
+add_lyric Jingle bells, jingle bells, jingle all the way!
 
 play G major
 play C major
 play G major
 
-# play C major text:1
-# play G major text:5
-# play D major text:6
+play G major lyric:1
+play C major lyric:6
+play G major lyric:8
 
 end_section Chorus
 

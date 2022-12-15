@@ -4,6 +4,7 @@ from enum import Enum
 # TODO: be able to change tuning
 tuning = ["E", "A", "D", "G", "B", "e"]
 space = "-"
+indent_len = 5
 max_abbr_len = 4
 num_spaces = max_abbr_len + 1 # leave enough room for labeling chords
 start_delimiter = "["
@@ -61,6 +62,13 @@ def add_text(text):
         "section": current_section, 
     })
 
+def add_lyric(lyric):
+    tab.append({
+        "type": TabType.Text,
+        "value": " " * indent_len + lyric,
+        "section": current_section, 
+    })
+
 def create_section(section_name):
     global current_section
 
@@ -96,7 +104,7 @@ def print_tab():
         lines = [""] * NUM_STRINGS
         for i, string in enumerate(tuning):
             lines[i] += string + " " + start_delimiter + space + space
-        chord_label_line = " " * len(lines[0])
+        chord_label_line = " " * indent_len
         is_empty = True
         return lines, chord_label_line, is_empty
 
@@ -115,7 +123,7 @@ def print_tab():
                     print_lines(lines)
                     print()
 
-                print(item["value"] + "\n")
+                print(item["value"])
 
                 lines, chord_label_line, is_empty = reset_lines()
             case TabType.Chord:
