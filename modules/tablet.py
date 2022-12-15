@@ -1,9 +1,11 @@
-from chord import Chord, get_supported_chord_names_list
+from chord import ABBR, Chord, get_supported_chord_names_list
 from enum import Enum
 
 # TODO: be able to change tuning
 tuning = ["E", "A", "D", "G", "B", "e"]
 space = "-"
+max_abbr_len = 4
+num_spaces = max_abbr_len + 1 # leave enough room for labeling chords
 start_delimiter = "["
 end_delimiter = "]"
 
@@ -28,13 +30,14 @@ def play(name_or_shape):
                 })
             else:
                 [chord, chord_type] = name_or_shape.split(" ")
-                chord = Chord(chord, chord_type)
+                chord_obj = Chord(chord, chord_type)
                 chord_method = 'play_' + chord_type
-                shape = getattr(chord, chord_method)()
+                shape = getattr(chord_obj, chord_method)()
                 tab.append({ 
                     "type": TabType.Chord,
                     "value": shape,
                     "section": current_section,
+                    "abbr": chord + ABBR[chord_type],
                 })
         case "list": # custom shape
             tab.append({
@@ -93,15 +96,17 @@ def print_tab():
         lines = [""] * NUM_STRINGS
         for i, string in enumerate(tuning):
             lines[i] += string + " " + start_delimiter + space + space
+        chord_label_line = " " * len(lines[0])
         is_empty = True
-        return lines, is_empty
+        return lines, chord_label_line, is_empty
 
     def print_lines(lines):
+        print(chord_label_line)
         for line in lines[::-1]:
             line += end_delimiter
             print(line)
     
-    lines, is_empty = reset_lines()
+    lines, chord_label_line, is_empty = reset_lines()
 
     for item in tab:
         match item["type"]:
@@ -112,13 +117,23 @@ def print_tab():
 
                 print(item["value"] + "\n")
 
-                lines, is_empty = reset_lines()
+                lines, chord_label_line, is_empty = reset_lines()
             case TabType.Chord:
+                # add line for chord labels
+                if "abbr" in item:
+                    chord_label_line += item["abbr"] + " " * (num_spaces - len(item["abbr"]) + 1)
+                else:
+                    chord_label_line += " " * (num_spaces + 1)
+
                 for i, note in enumerate(item["value"]):
                     if note == -1:
-                        lines[i] += space + space + space
+                        lines[i] += space
                     else:
-                        lines[i] += str(note) + space + space
+                        lines[i] += str(note)
+                    
+                    for _ in range(num_spaces):
+                        lines[i] += space
+
                     is_empty = False
 
     if not is_empty:

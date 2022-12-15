@@ -2,19 +2,21 @@ add_text Jingle Bells
 
 play C major
 play A minor
-play G major
+play G suspended4
 play D major
 
 create_chord 0 3 2 3 3 0 C major9
 play C major9
+
+play E minor
 
 play -1 -1 -1 -1 -1 6
 play -1 -1 4 -1 -1 -1
 play -1 2 -1 -1 -1 -1
 
 play C major9
+play E minor
 
-# currently does not support nested sections
 create_section Chorus
 
 add_text Jingle bells, jingle bells, jingle all the way!
