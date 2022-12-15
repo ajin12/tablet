@@ -22,12 +22,20 @@ create_section Chorus
 add_lyric Jingle bells, jingle bells, jingle all the way!
 
 play G major
-play C major
-play G major
-
-play G major lyric:1
 play C major lyric:6
 play G major lyric:8
+
+add_lyric Oh what fun it is to ride
+
+play C major
+play G major lyric:5
+play 1 2 2 0 3 -1 lyric:6
+play 1 2 2 0 3 -1
+
+add_lyric In a one-horse open sleigh, hey!
+
+play A dominant7 lyric:3
+play D dominant7 lyric:5
 
 end_section Chorus
 
