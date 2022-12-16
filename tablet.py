@@ -41,11 +41,9 @@ with open(sys.argv[1], 'r') as file:
             shape = [int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4]), int(parts[5]), int(parts[6])]
             name = " ".join(parts[7:])
             getattr(module, parts[0])(shape, name)
-        elif any(part in ["add_text", "add_lyric"] for part in parts):
+        elif any(part in ["add_text", "add_lyric", "create_section", "end_section", "repeat"] for part in parts):
             text = " ".join(parts[1:])
             getattr(module, parts[0])(text)
-        elif any(part in ["create_section", "end_section", "repeat"] for part in parts):
-            getattr(module, parts[0])(parts[1])
         elif "export_pdf" in parts:
             pdf_name = " ".join(parts[1:])
 

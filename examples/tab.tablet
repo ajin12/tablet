@@ -3,40 +3,55 @@ add_text Jingle Bells
 play C major
 play A minor
 play G suspended4
-play D major
+play Db major
 
 create_chord 0 3 2 3 3 0 C major9
 play C major9
 
 play E minor
-
 play -1 -1 -1 -1 -1 6
 play -1 -1 4 -1 -1 -1
-play -1 2 -1 -1 -1 -1
-
+play -1 2 -1 -1 -1 2
 play C major9
-play E minor
+play G# dominant7
+
+
+create_section Verse 1
+
+add_lyric Dashing through the snow, in a one-horse open sleigh,
+play G major
+play C major lyric:9
+
+end_section Verse 1
+
 
 create_section Chorus
 
 add_lyric Jingle bells, jingle bells, jingle all the way!
-
-play G major
+play G major lyric:1
 play C major lyric:6
 play G major lyric:8
 
 add_lyric Oh what fun it is to ride
-
 play C major
 play G major lyric:5
 play 1 2 2 0 3 -1 lyric:6
 
 add_lyric In a one-horse open sleigh, hey!
-
 play A dominant7 lyric:3
 play D dominant7 lyric:5
 
 end_section Chorus
+
+
+create_section Verse 2
+
+add_lyric A day or two ago, I thought I'd take a ride
+play G major lyric:2
+play C major lyric:11
+
+end_section Verse 2
+
 
 repeat Chorus
 
